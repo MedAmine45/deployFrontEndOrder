@@ -1,0 +1,262 @@
+<app-header></app-header>
+<div class="jumbotron jumbtron-fuild bg">
+  <h3 class="display-4 text-center"><img src="../assets/img/fiches.jpg" alt=""class="img-fluid rounded-circle" width="150px" height="150px" > Pre-inscription App</h3>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-10 offset-md-1"> 
+ 
+ <form #form="ngForm" autocomplete="on" *ngIf="orderService.order" (submit)="onSubmit(form)"> <!--*ngIf="orderService.order" -->
+  <input type="hidden" name="PrescriptionId" #PrescriptionId ="ngModel" [(ngModel)]="orderService.order.PrescriptionId">
+  
+  <div class="row">
+  <div class="col-md-6">
+      <div class="form-group">
+          <label>Price analyses: </label>
+          <div class="input-group">
+              <div class="input-group-prepend">
+                <div class="input-group-text">$</div>
+              </div>
+              <input name="Priceanalyses" #Priceanalyses ="ngModel"
+                   [(ngModel)]="orderService.order.Price_analyses" 
+                   class="form-control" [class.is-invalid]="!isValid && orderService.order.Price_analyses== 0">
+            </div>
+
+          
+        </div>
+    <div class="form-group">
+      <label>Amount paid :</label>
+      <div class="input-group">
+          <div class="input-group-prepend">
+            <div class="input-group-text">$</div>
+          </div>
+          <input name="Amountpaid" #Amountpaid = "ngModel" 
+              [(ngModel)]="orderService.order.Amount_paid" class="form-control"
+              [class.is-invalid]="!isValid && orderService.order.Amount_paid== 0">
+        </div>
+     
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+          <label>Invoice Id:</label>
+          <input name="Invoice_id" #Invoice_id ="ngModel" [(ngModel)]="orderService.order.Invoice_id" class="form-control">
+      </div>
+      <div class="form-group col-md-6">
+          <label>Invoice state :</label>
+          <select name="Invoice_state" #Invoice_state = "ngModel" [(ngModel)]="orderService.order.Invoice_state" class="form-control"
+                [class.is-invalid]="!isValid && orderService.order.Invoice_state ==''" >
+              <option value="">--select -- </option>
+              <option value ="noinvoice">no invoice</option>
+              <option value ="invoicerequested">invoice requested</option>
+            <option value ="invoicedsent">invoiced sent</option>
+            </select>
+      </div>
+        
+      </div>
+      <div class="form-group">
+          <label>Payment method :</label>
+          <select name="Paymentmethod" #Paymentmethod = "ngModel" [(ngModel)]="orderService.order.Payment_method" class="form-control"
+                        [class.is-invalid]="!isValid && orderService.order.Payment_method ==''">
+              <option value="">--select -- </option>
+              <option value ="notselected">not selected</option>
+              <option value ="online">online</option>
+            <option value ="check">check</option>
+            <option value ="transfer">transfer</option>
+            </select>
+      </div>
+      <div class="form-group">
+        <label>Shipped by:</label>
+         <input name="Shippedby" #Shippedby ="ngModel" [(ngModel)]="orderService.order.Shipped_by" class="form-control">
+      </div>
+      <div class="form-group">
+          <label>Shipped on:</label>
+           <input name="Shippedon" #Shippedon ="ngModel" [(ngModel)]="orderService.order.Shipped_on" class="form-control">
+        </div>
+  </div>
+  <div class="col-md-6">
+
+    <div class="form-group">
+      <label>Price shipping:</label>
+      <div class="input-group">
+          <div class="input-group-prepend">
+            <div class="input-group-text">$</div>
+          </div>
+          <input name="Priceshipping" #Priceshipping = "ngModel" [(ngModel)]="orderService.order.Price_shipping" class="form-control"
+          [class.is-invalid]="!isValid && orderService.order.Price_shipping == 0">
+        </div>
+
+     
+    </div>
+    <div class="form-group">
+        <label>State : </label>
+        <select name="State" #State = "ngModel" [(ngModel)]="orderService.order.State" class="form-control"
+        [class.is-invalid]="!isValid && orderService.order.State ==''">
+          <option value ="">--select -- </option>
+          <option value ="Prescribed">Prescribed</option>
+          <option value ="Ordered">Ordered</option>
+          <option value ="Preparation">Preparation</option>
+          <option value ="Sent">Sent</option>
+          <option value ="Delivered">Delivered</option>
+          <option value ="Samplessent">Samples sent</option>
+          <option value ="Samplesreceived">Samples received</option>
+          <option value ="Cancelled">Cancelled</option>
+  
+        </select>
+      </div>
+ 
+    <div class="form-group">
+      <label>Billing State :</label>
+      <select name="Billingstate" #Billingstate = "ngModel" [(ngModel)]="orderService.order.Billing_state" class="form-control"
+                    [class.is-invalid]="!isValid && orderService.order.Billing_state ==''">
+          <option value="">--select -- </option>
+          <option value ="topay">to pay</option>
+          <option value ="paid">paid</option>
+        <option value ="checkexpected">check expected</option>
+        <option value ="transferexpected">transfer expected</option>
+        <option value ="wrongpayment">wrong payment</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label>dossier glims:</label>
+        <input name="dossierglims" #dossierglims ="ngModel" [(ngModel)]="orderService.order.Dossier_glims" class="form-control">
+    </div>
+    <div class="form-group">
+        <label>Kit Shipping no:</label>
+        <input name="Kitshippingno" #Kitshippingno ="ngModel" [(ngModel)]="orderService.order.Kit_shipping_no" class="form-control">
+    </div>
+    <div class="form-group">
+        <label>Sample Shipping no:</label>
+        <input name="Sampleshippingno" #Sampleshippingno ="ngModel" [(ngModel)]="orderService.order.Sample_shipping_no" class="form-control">
+    </div>
+  </div> 
+  
+  <!--Analyse table-->
+  <h3>Analyses:</h3 >
+    <table class="table table-borderless">
+        <thead class="thead-light">
+          <th>Code</th>
+          <th>Price</th>
+          <th>Tubes</th>
+          <th>
+            <a class="btn btn-sm btn-success text-white"(click)="AddOrEditOrderAnalyse(null,orderService.order.PrescriptionId)"><i class="fa fa-plus"></i>Add Analyse</a>
+          </th>
+        </thead>
+        <tbody>
+          <tr *ngIf="orderService.order.Analyses.length == 0" [class.text-danger]="!isValid && orderService.order.Analyses.length  == 0 ">
+            <td class="font-italic text-center" colspan="4">
+              No Analyse selected for this order.
+            </td>
+          </tr>
+          <tr *ngFor="let item of orderService.order.Analyses; let i=index;">
+            <td>{{item.Code}}</td>
+            <td>{{item.Price}}</td>
+            <td>{{item.Tubes}}</td>
+            <td>
+                <a class="btn btn-sm btn-info text-white"(click)="AddOrEditOrderAnalyse(i,orderService.order.PrescriptionId)"><i class="fa fa-pencil"></i></a>
+                <a class="btn btn-sm btn-danger text-white ml-1"(click)="onDeleteOrderAnalyse(item.AnalyseID,i)"><i class="fa fa-trash"></i></a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+ 
+<!--Patient table-->
+<h3>Patient:</h3 >
+<table class="table table-borderless">
+  <thead class="thead-light">
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Email</th>
+      <th>Birth Date</th>
+      <th>
+        <a *ngIf="orderService.order.Patient == null" class="btn btn-sm btn-success text-white"(click)="AddorEditPatient(null,orderService.order)"><i class="fa fa-plus"></i>Add Patient</a>
+      </th>
+  </thead>
+  <tbody>
+    <tr *ngIf="orderService.order.Patient == null" [class.text-danger]="!isValid && orderService.order.Patient  == null "> 
+      <td class="font-italic text-center" colspan="5">
+        No Patient added for this order
+      </td>
+    </tr>
+    <tr *ngIf="orderService.order.Patient != null" >
+      <td >{{orderService.order.Patient.Firstname}}</td>
+      <td>{{orderService.order.Patient.Lastname}}</td>
+      <td>{{orderService.order.Patient.Email}}</td>
+      <td>{{orderService.order.Patient.Birth_date}}</td>
+      <td>
+          <a class="btn btn-sm btn-info text-white"(click)="AddorEditPatient(orderService.order.Patient,orderService.order)"><i class="fa fa-pencil"></i></a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<label>Prescriber:</label>
+<!-- Prescriber table -->
+<table class="table table-borderless">
+    <thead class="thead-light">
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+
+        <th>
+          <a *ngIf="orderService.order.Prescriber == null" class="btn btn-sm btn-success text-white"(click)="AddorEditPrescriber(null,orderService.order)"><i class="fa fa-plus"></i>Add Prescriber</a>
+        </th>
+    </thead>
+    <tbody>
+      <tr  *ngIf="orderService.order.Prescriber == null" [class.text-danger]="!isValid && orderService.order.Prescriber  == null " > 
+        <td class="font-italic text-center" colspan="5">
+          No Prescriber added for this order
+        </td>
+      </tr>
+        <tr *ngIf="orderService.order.Prescriber != null" >
+          <td >{{orderService.order.Prescriber.Firstname}}</td>
+          <td>{{orderService.order.Prescriber.Lastname}}</td>
+          <td>{{orderService.order.Prescriber.Email}}</td>
+          <td>
+              <a class="btn btn-sm btn-info text-white"(click)="AddorEditPrescriber(orderService.order.Prescriber,orderService.order)"><i class="fa fa-pencil"></i></a>
+          </td>
+      </tr>
+    </tbody>
+  </table>
+
+<!--Logs table-->
+<h3>Logs:</h3 >
+  <table class="table table-borderless">
+    <thead class="thead-light">
+      <th>State</th>
+      <th>Billing State</th>
+      <th>Invoice State</th>
+      <th>
+        <a class="btn btn-sm btn-success text-white"(click)="AddOrEditOrderLog(null,orderService.order.PrescriptionId)"><i class="fa fa-plus"></i>Add Log</a>
+      </th>
+    </thead>
+    <tbody>
+      <tr *ngIf="orderService.order.Logs.length == 0" [class.text-danger]="!isValid && orderService.order.Logs.length  == 0 ">
+        <td class="font-italic text-center" colspan="4">
+          No Log selected for this order.
+        </td>
+      </tr>
+      <tr *ngFor="let item of orderService.order.Logs; let i=index;">
+        <td>{{item.State}}</td>
+        <td>{{item.Billing_state}}</td>
+        <td>{{item.Invoice_state}}</td>
+        <td>
+            <a class="btn btn-sm btn-info text-white"(click)="AddOrEditOrderLog(i,orderService.order.PrescriptionId)"><i class="fa fa-pencil"></i></a>
+            <a class="btn btn-sm btn-danger text-white ml-1"(click)="onDeleteOrderLog(item.LogID,i)"><i class="fa fa-trash"></i></a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+<hr>
+</div>
+  <div class="form-group text-right">
+      <a class="btn btn-outline-info ml-1" routerLink="/home"><i class="fa fa-list"></i> View Orders </a>
+      &nbsp;
+      <button type="submit" class="btn btn-primary"><i class="fa fa-floppy-o" aria-hidden="true"></i> Submit</button> 
+  </div>
+
+</form>
+
+</div>
+</div>
+</div>
+</div> 
+

@@ -1,0 +1,28 @@
+<table class="table table-hover">
+    <thead class="thead-light">
+      <th>#Order ID.</th>
+      <th>P. Method</th>
+      <th>Price shipping</th>
+      <th>State</th>
+      <th>Patient</th>
+      <th>Prescriber</th>
+      
+      <th>
+        <a class="btn btn-outline-success" routerLink="/order" title="Create New order"><i class="fa fa-plus-square"></i></a>
+      </th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of orderList">
+        <td (click)="openForEdit(item.PrescriptionId)">{{item.PrescriptionId}}</td>
+        <td (click)="openForEdit(item.PrescriptionId)">{{item.Payment_method}}</td>
+        <td (click)="openForEdit(item.PrescriptionId)">{{item.Price_shipping}} </td>
+        <td (click)="openForEdit(item.PrescriptionId)">{{item.State}}</td>
+        <td (click)="openForEdit(item.PrescriptionId)">{{item.Patient.Firstname}} {{item.Patient.Lastname}} </td>
+        <td (click)="openForEdit(item.PrescriptionId)">{{item.Prescriber.Firstname}} {{item.Prescriber.Lastname}}</td>
+        <td align="center" style="width: 100px"> 
+            <a style="cursor: pointer" class="text-danger" (click)="onOrderDelete(item.PrescriptionId)" title="Remove order" ><i class="fa fa-trash fa-lg"></i></a>  &nbsp;
+            <a style="cursor: pointer" class="text-info"  (click)="onChangeState(item)" title="Change State"><i class="fa fa-sort fa-lg"></i></a>
+        </td>
+      </tr>
+    </tbody>
+  </table>

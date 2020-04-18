@@ -1,0 +1,74 @@
+<h4 class="dispaly-4">Log </h4>
+<hr>
+
+<form #form="ngForm" autocomplete="off" (submit)="onSubmit(form)">
+    <input type="hidden" name="LogID" #LogID="ngModel" [(ngModel)]="log.LogID" >
+    <input type="hidden" name="PrescriptionId" #PrescriptionId="ngModel" [(ngModel)]="log.PrescriptionId" >
+    
+    <div class="form-row">
+      <div class="col-md-6">
+          <div class="form-group">
+              <label>State:</label>
+              <select name="State" #State = "ngModel" [(ngModel)]="log.State" class="form-control"
+              [class.is-invalid]="!isValid && log.State==''">
+                  <option value ="">--select -- </option>
+                  <option value ="Prescribed">Prescribed</option>
+                  <option value ="Ordered">Ordered</option>
+                  <option value ="Preparation">Preparation</option>
+                  <option value ="Sent">Sent</option>
+                  <option value ="Delivered">Delivered</option>
+                  <option value ="Samplessent">Samples sent</option>
+                  <option value ="Samplesreceived">Samples received</option>
+                  <option value ="Cancelled">Cancelled</option>
+          
+                </select>
+          </div>
+          <div class="form-group">
+            <label>Billing State:</label>
+            <select name="Billing_state" #Billing_state = "ngModel" [(ngModel)]="log.Billing_state" class="form-control"
+            [class.is-invalid]="!isValid && log.Billing_state ==''">
+                <option value="">--select -- </option>
+                <option value ="topay">to pay</option>
+                <option value ="paid">paid</option>
+              <option value ="checkexpected">check expected</option>
+              <option value ="transferexpected">transfer expected</option>
+              <option value ="wrongpayment">wrong payment</option>
+              </select>
+          </div>
+          <div class="form-group">
+              <label>Create By:</label>
+              <input name="By" #By ="ngModel" [(ngModel)]="log.By" class="form-control" [class.is-invalid]="!isValid &&log.By==''">
+            </div>
+      </div>
+      <div class="col-md-6">
+          <div class="form-group">
+              <label>Invoice_state:</label>
+              <select name="Invoice_state" #Invoice_state = "ngModel" [(ngModel)]="log.Invoice_state" class="form-control"
+              [class.is-invalid]="!isValid && log.Invoice_state ==''">
+                  <option value="">--select -- </option>
+                  <option value ="noinvoice">no invoice</option>
+                  <option value ="invoicerequested">invoice requested</option>
+                <option value ="invoicedsent">invoiced sent</option>
+                </select>
+          </div>
+          <div class="form-group">
+              <label>Create On:</label> 
+              <div class="input-group">
+                  <input matInput [matDatepicker] = "picker" placeholder = "Choose a date" name="On" #On ="ngModel" [(ngModel)]="log.On" class="form-control" [class.is-invalid]="!isValid &&log.On==''">
+                  <div class="input-group-append">
+                      <mat-datepicker-toggle matSuffix [for] = "picker"></mat-datepicker-toggle>
+                      <mat-datepicker #picker></mat-datepicker>
+                  </div>
+              </div>
+                 
+               
+              
+            </div>
+      </div>
+    </div>
+    <div class="form-group text-right">
+        <button type="submit" class="btn btn-primary"><i class="fa fa-floppy-o" aria-hidden="true"></i> submit</button>
+        <button type="button" class="btn btn-outline-danger ml-1" [mat-dialog-close]><i class="fa fa-close" aria-hidden="true"></i> Close</button>
+    </div>
+    
+    </form>

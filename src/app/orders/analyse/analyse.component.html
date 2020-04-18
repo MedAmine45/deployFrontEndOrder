@@ -1,0 +1,65 @@
+<h4 class="dispaly-4">Analyse </h4>
+<hr>
+<form #form="ngForm" autocomplete="off" (submit)="onSubmit(form)">
+<input type="hidden" name="AnalyseID" #AnalyseID="ngModel" [(ngModel)]="analyse.AnalyseID" >
+<input type="hidden" name="PrescriptionId" #PrescriptionId="ngModel" [(ngModel)]="analyse.PrescriptionId" >
+
+<div class="form-group">
+  <label>Tubes:</label>
+  <input name="Tubes" #Tubes ="ngModel" [(ngModel)]="analyse.Tubes" class="form-control" readonly [class.is-invalid]="!isValid &&analyse.Tubes==''">
+</div>
+<div class="form-row">
+  <div class="col-md-6">
+      <div class="form-group">
+          <label>Code:</label>
+          <div class="input-group">
+              <div class="input-group-prepend">
+                <div class="input-group-text">#</div>
+              </div>
+              <input name="Code" #Code ="ngModel" [(ngModel)]="analyse.Code" class="form-control"[class.is-invalid]="!isValid &&analyse.Code==''">
+          </div>
+      </div>
+      <div class="form-group">
+        <label>Tube violet:</label>
+        <input name="Tube_violet" #Tube_violet ="ngModel" [(ngModel)]="analyse.Tube_violet" class="form-control"
+        (keyup)="updateTubes()">
+      </div>
+      <div class="form-group">
+          <label>Tube rouge:</label>
+          <input name="Tube_rouge" #Tube_rouge ="ngModel" [(ngModel)]="analyse.Tube_rouge" class="form-control"
+          (keyup)="updateTubes()">
+        </div>
+        <div class="form-group">
+            <label>Selles:</label>
+            <input name="Selles" #Selles ="ngModel" [(ngModel)]="analyse.Selles" class="form-control"
+            (keyup)="updateTubes()">
+          </div>
+  </div>
+  <div class="col-md-6">
+      <div class="form-group">
+          <label>Price:</label>
+          <div class="input-group">
+              <div class="input-group-prepend">
+                <div class="input-group-text">$</div>
+              </div>
+              <input name="Price" #Price ="ngModel" [(ngModel)]="analyse.Price" class="form-control" [class.is-invalid]="!isValid &&analyse.Price==0">
+          </div>
+      </div>
+      <div class="form-group">
+          <label>Tube gris:</label>
+          <input name="Tube_gris" #Tube_gris ="ngModel" [(ngModel)]="analyse.Tube_gris" class="form-control"
+          (keyup)="updateTubes()">
+        </div>
+        <div class="form-group">
+            <label>Urine matin:</label>
+            <input name="Urine_matin" #Urine_matin ="ngModel" [(ngModel)]="analyse.Urine_matin" class="form-control"
+            (keyup)="updateTubesUrine()">
+          </div>
+  </div>
+</div>
+<div class="form-group text-right">
+    <button type="submit" class="btn btn-primary"><i class="fa fa-floppy-o" aria-hidden="true"></i> submit</button>
+    <button type="button" class="btn btn-outline-danger ml-1" [mat-dialog-close]><i class="fa fa-close" aria-hidden="true"></i> Close</button>
+</div>
+
+</form>

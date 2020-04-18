@@ -1,0 +1,23 @@
+● src
++---● app
+|   +--● orders
+|   |  |--orders.component.ts|.html|.css
+|   |  +--● order
+|   |  |  |--order.component.ts|.html|.css
+|   |  +--● order-items
+|   |  |  |--order-items.component.ts|.html|.css
+|   |  |
+|   |  +--● shared
+|   |     |--person.model.ts
+|   |     |--person.service.ts  
+|   |     |--patient.model.ts
+|   |     |--prescriber.model.ts 
+|   |     |--Prescription.model.ts
+|   |     |--Prescription.service.ts  
+|   |
+|   |--app.module.ts
+|
++---● environments  
+|   |--environment.ts (saved apiUrl)
+|
+|--index.html (cdn path for bootstrap and font awesome icon)

@@ -1,0 +1,72 @@
+<h4 class="display-4">Patient</h4>
+<hr>
+<form #form="ngForm" autocomplete="on">
+  <input type="hidden" name="PersonId" #PersonId ="ngModel" [(ngModel)]="patient.PersonId" >
+  <div class="form-row">
+      <div class="col-md-6">
+          <div class="form-groupe">
+            <label>First Name:</label>
+            <input name="Firstname" #Firstname ="ngModel" [(ngModel)]="patient.Firstname" class="form-control">
+          </div>
+          <div class="form-groupe">
+              <label>Last Name:</label>
+              <input name="Lastname" #Lastname ="ngModel" [(ngModel)]="patient.Lastname" class="form-control">
+            </div>
+            <div class="form-groupe">
+                <label>Email:</label>
+                <input name="Email" #Email ="ngModel" [(ngModel)]="patient.Email" class="form-control">
+              </div>
+              <div class="form-groupe">
+                  <label>Birth Date:</label>
+                  <input name="Birth_date" #Birth_date ="ngModel" [(ngModel)]="patient.Birth_date" class="form-control">
+                </div>
+                <div class="form-groupe">
+                    <label>Sex:</label>
+                    <input name="Sex" #Sex ="ngModel" [(ngModel)]="patient.Sex" class="form-control">
+                  </div>
+                  <div class="form-groupe">
+                      <label>Height:</label>
+                      <input name="Height" #Height ="ngModel" [(ngModel)]="patient.Height" class="form-control">
+                    </div>
+                    <div class="form-groupe">
+                        <label>Weight:</label>
+                        <input name="Weight" #Weight ="ngModel" [(ngModel)]="patient.Weight" class="form-control">
+                      </div>
+      </div>
+      <div class="col-md-6">
+          <div class="form-groupe">
+            <label>Address1:</label>
+            <input name="Address1" #Address1 ="ngModel" [(ngModel)]="patient.Address1" class="form-control">
+          </div>
+            <div class="form-groupe">
+                <label>Address2:</label>
+                <input name="Address2" #Address2 ="ngModel" [(ngModel)]="patient.Address2" class="form-control">
+              </div>
+              <div class="form-groupe">
+                  <label>Zip:</label>
+                  <input name="Zip" #Zip ="ngModel" [(ngModel)]="patient.Zip" class="form-control">
+                </div>
+                <div class="form-groupe">
+                    <label>City:</label>
+                    <input name="City" #City ="ngModel" [(ngModel)]="patient.City" class="form-control">
+                  </div>
+                  <div class="form-groupe">
+                      <label>Country:</label>
+                      <input name="Country" #Country ="ngModel" [(ngModel)]="patient.Country" class="form-control">
+                    </div>
+                    <div class="form-groupe">
+                        <label>Mobile phone:</label>
+                        <input name="Mobile_phone" #Mobile_phone ="ngModel" [(ngModel)]="patient.Mobile_phone" class="form-control">
+                      </div>
+                      <div class="form-groupe">
+                          <label>Home phone:</label>
+                          <input name="Home_phone" #Home_phone ="ngModel" [(ngModel)]="patient.Home_phone" class="form-control">
+                        </div>
+      </div>
+  </div>
+  <br/>
+  <div class="form-groupe text-right">
+      <button type="submit" class="btn btn-primary"><i class="fa fa-floppy-o" aria-hidden="true"></i> submit</button>
+      <button type="button" class="btn btn-outline-danger ml-1"><i class="fa fa-close" aria-hidden="true"></i> Close</button>
+  </div>
+</form>

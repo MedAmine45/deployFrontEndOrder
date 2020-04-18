@@ -1,0 +1,62 @@
+<h4 class="display-4">prescriber</h4>
+<hr>
+<form #form="ngForm" autocomplete="on" (submit)="onSubmit(form)">
+  <input type="hidden" name="PersonId" #PersonId ="ngModel" [(ngModel)]="prescriber.PersonId" >
+  <div class="form-row">
+      <div class="col-md-6">
+          <div class="form-groupe">
+            <label>First Name:</label>
+            <input name="Firstname" #Firstname ="ngModel" [(ngModel)]="prescriber.Firstname" class="form-control" [class.is-invalid]="!isValid && prescriber.Firstname==''">
+          </div>
+          <div class="form-groupe">
+              <label>Last Name:</label>
+              <input name="Lastname" #Lastname ="ngModel" [(ngModel)]="prescriber.Lastname" class="form-control" [class.is-invalid]="!isValid && prescriber.Lastname==''">
+            </div>
+            <div class="form-groupe">
+                <label>Email:</label>
+                <input name="Email" #Email ="ngModel" [(ngModel)]="prescriber.Email" class="form-control" [class.is-invalid]="!isValid && prescriber.Email==''">
+              </div>
+              <div class="form-groupe">
+                  <label>Address1:</label>
+                  <input name="Address1" #Address1 ="ngModel" [(ngModel)]="prescriber.Address1" class="form-control" [class.is-invalid]="!isValid && prescriber.Address1==''">
+                </div>
+                  <div class="form-groupe">
+                      <label>Address2:</label>
+                      <input name="Address2" #Address2 ="ngModel" [(ngModel)]="prescriber.Address2" class="form-control">
+                    </div>
+                    <div class="form-groupe">
+                        <label>Language:</label>
+                        <input name="Language" #Language ="ngModel" [(ngModel)]="prescriber.Language" class="form-control" [class.is-invalid]="!isValid && prescriber.Language==''">
+                      </div>
+                
+      </div>
+      <div class="col-md-6">
+          
+              <div class="form-groupe">
+                  <label>Zip:</label>
+                  <input name="Zip" #Zip ="ngModel" [(ngModel)]="prescriber.Zip" class="form-control" [class.is-invalid]="!isValid && prescriber.Zip==''">
+                </div>
+                <div class="form-groupe">
+                    <label>City:</label>
+                    <input name="City" #City ="ngModel" [(ngModel)]="prescriber.City" class="form-control" [class.is-invalid]="!isValid && prescriber.City==''">
+                  </div>
+                  <div class="form-groupe">
+                      <label>Country:</label>
+                      <input name="Country" #Country ="ngModel" [(ngModel)]="prescriber.Country" class="form-control" [class.is-invalid]="!isValid && prescriber.Country==''">
+                    </div>
+                    <div class="form-groupe">
+                        <label>Mobile phone:</label>
+                        <input name="Mobile_phone" #Mobile_phone ="ngModel" [(ngModel)]="prescriber.Mobile_phone" class="form-control">
+                      </div>
+                      <div class="form-groupe">
+                          <label>Office phone:</label>
+                          <input name="Office_phone" #Office_phone ="ngModel" [(ngModel)]="prescriber.Office_phone" class="form-control">
+                        </div>
+      </div>
+  </div>
+  <br/>
+  <div class="form-groupe text-right">
+      <button type="submit" class="btn btn-primary"><i class="fa fa-floppy-o" aria-hidden="true"></i> submit</button>
+      <button type="button" class="btn btn-outline-danger ml-1" [mat-dialog-close]><i class="fa fa-close" aria-hidden="true"></i> Close</button>
+  </div>
+</form>
